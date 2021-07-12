@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using RestWithASPNet.Model;
 
-namespace RestWithASPNet.Services.Implementations
+namespace RestWithASPNet.Services
 {
     public interface IPersonService
     {
