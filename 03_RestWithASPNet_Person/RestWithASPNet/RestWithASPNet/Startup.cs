@@ -10,6 +10,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using RestWithASPNet.Services;
+using RestWithASPNet.Services.Implementations;
 
 namespace RestWithASPNet
 {
@@ -27,6 +29,9 @@ namespace RestWithASPNet
         {
 
             services.AddControllers();
+
+            //Dependecy Injection
+            services.AddScoped<IPersonService, PersonServiceImplementation>(); 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
