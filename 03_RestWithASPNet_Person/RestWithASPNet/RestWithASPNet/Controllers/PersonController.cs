@@ -10,7 +10,7 @@ using RestWithASPNet.Services;
 namespace RestWithASPNet.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class PersonController : ControllerBase
     {
 
