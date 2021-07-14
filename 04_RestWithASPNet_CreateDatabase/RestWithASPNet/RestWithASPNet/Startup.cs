@@ -25,8 +25,10 @@ namespace RestWithASPNet
 
             services.AddControllers();
 
+            //Salving the connectionString
             var connection = Configuration["SqlConnection:SqlConnectionString"];
 
+            //Realizing the addition of context in the database
             services.AddDbContext<SqlContext>(options => options.UseSqlServer(connection));
 
             //Dependecy Injection

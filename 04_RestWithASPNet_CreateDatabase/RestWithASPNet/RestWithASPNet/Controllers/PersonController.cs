@@ -23,12 +23,14 @@ namespace RestWithASPNet.Controllers
             _personService = personService;
         }
 
+        //Method for List All Persons
         [HttpGet]
         public IActionResult List()
         {
             return Ok(_personService.FindAll());
         }
 
+        //Method for List Unique Persons
         [HttpGet("{id}")]
         public IActionResult List(long id)
         {
@@ -37,6 +39,7 @@ namespace RestWithASPNet.Controllers
             return Ok(person);
         }
 
+        //Method for creating Person
         [HttpPost]
         public IActionResult Create([FromBody] Person person)
         {
@@ -44,6 +47,7 @@ namespace RestWithASPNet.Controllers
             return Ok(_personService.Create(person));
         }
 
+        //Method for Update Person
         [HttpPut]
         public IActionResult Update([FromBody] Person person)
         {
@@ -51,6 +55,7 @@ namespace RestWithASPNet.Controllers
             return Ok(_personService.Update(person));
         }
 
+        //Method for Delete Person
         [HttpDelete("{id}")]
         public IActionResult Delete(long id)
         {

@@ -2,6 +2,7 @@
 
 namespace RestWithASPNet.Model
 {
+    //Class identifying the columns in the database
     [Table("person")]
     public class Person
     {

@@ -11,6 +11,7 @@ namespace RestWithASPNet.Services.Implementations
     {
         private SqlContext _context;
 
+        //Saving the context the database
         public PersonServiceImplementation(SqlContext context)
         {
 
@@ -18,6 +19,7 @@ namespace RestWithASPNet.Services.Implementations
 
         }
 
+        //Method for create Person in the database
         public Person Create(Person person)
         {
             try
@@ -37,6 +39,7 @@ namespace RestWithASPNet.Services.Implementations
 
         }
 
+        //Method for delete Person in the database
         public void Delete(long id)
         {
 
@@ -62,6 +65,7 @@ namespace RestWithASPNet.Services.Implementations
 
         }
 
+        //Method for list all Persons in the database
         public List<Person> FindAll()
         {
 
@@ -69,11 +73,13 @@ namespace RestWithASPNet.Services.Implementations
 
         }
 
+        //Method for list unique Person in the database
         public Person FindById(long id)
         {
             return _context.Persons.SingleOrDefault(p => p.Id.Equals(id));
         }
 
+        //Method for update Person in the database
         public Person Update(Person person)
         {
             if (!Exists(person.Id)) return new Person();
@@ -101,6 +107,7 @@ namespace RestWithASPNet.Services.Implementations
             return person;
         }
 
+        //Method for validate the existing Person in the database
         private bool Exists(long id)
         {
 

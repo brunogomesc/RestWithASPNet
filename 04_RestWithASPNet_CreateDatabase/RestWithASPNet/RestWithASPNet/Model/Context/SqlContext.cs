@@ -12,6 +12,7 @@ namespace RestWithASPNet.Model.Context
 
         public SqlContext(DbContextOptions<SqlContext> options) : base(options){}
 
+        //Propertie Person the Database, with model
         public DbSet<Person> Persons { get; set; }
 
     }
