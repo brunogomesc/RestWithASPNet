@@ -12,7 +12,7 @@ namespace RestWithASPNet.Model
     {
         [Key]
         [Column("id")]
-        public long id { get; set; }
+        public long Id { get; set; }
 
         [Column("users")]
         public string Users { get; set; }
