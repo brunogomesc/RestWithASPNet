@@ -20,6 +20,9 @@ namespace RestWithASPNet.Model
         [Column("full_name")]
         public string FullName { get; set; }
 
+        [Column("pass")]
+        public string Password { get; set; }
+
         [Column("refresh_token")]
         public string RefreshToken { get; set; }
 
