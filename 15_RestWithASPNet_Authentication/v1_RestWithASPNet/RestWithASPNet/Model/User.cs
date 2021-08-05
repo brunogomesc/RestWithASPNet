@@ -7,15 +7,17 @@ using System.Threading.Tasks;
 
 namespace RestWithASPNet.Model
 {
+
     [Table("users")]
     public class User
     {
+
         [Key]
         [Column("id")]
         public long Id { get; set; }
 
         [Column("users")]
-        public string Users { get; set; }
+        public string Username { get; set; }
 
         [Column("full_name")]
         public string FullName { get; set; }
@@ -27,7 +29,7 @@ namespace RestWithASPNet.Model
         public string RefreshToken { get; set; }
 
         [Column("refresh_token_expiry_time")]
-        public DateTime RefreshTokenExpiredTime { get; set; }
+        public DateTime RefreshTokenExpiryTime { get; set; }
 
     }
 }
