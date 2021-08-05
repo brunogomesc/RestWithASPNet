@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <Folder Include="db\dataset\" />
+    <Folder Include="Configurations\" />
   </ItemGroup>
 
   <ItemGroup>
