@@ -12,6 +12,8 @@ namespace RestWithASPNet.Repository
 
         User ValidateCredentials(UserVO user);
 
+        User ValidateCredentials(string username);
+
         User RefreshUserInfo(User user);
 
     }

@@ -23,22 +23,57 @@ namespace RestWithASPNet.Controllers
         }
 
         [HttpPost]
-        [ProducesResponseType((200), Type = typeof(PersonVO))]
+        [ProducesResponseType((200), Type = typeof(UserVO))]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
         [Route("signin")]
         public IActionResult Signin([FromBody] UserVO user)
         {
 
-            if (user == null) return BadRequest("Invalida client request");
+            try
+            {
 
-            var token = _loginBusiness.ValidateCredentials(user);
+                if (user == null) return BadRequest("Invalid client request");
 
-            if (token == null) return Unauthorized();
+                var token = _loginBusiness.ValidateCredentials(user);
 
-            return Ok(token);
+                if (token == null) return Unauthorized();
+
+                return Ok(token);
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
 
         }
 
+        [HttpPost]
+        [ProducesResponseType((200), Type = typeof(UserVO))]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
+        [Route("refresh")]
+        public IActionResult Refresh([FromBody] TokenVO tokenVo)
+        {
+
+            try
+            {
+
+                if (tokenVo == null) return BadRequest("Invalid client request");
+
+                var token = _loginBusiness.ValidateCredentials(tokenVo);
+
+                if (token == null) return BadRequest("Invalid client request");
+
+                return Ok(token);
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }
     }
 }

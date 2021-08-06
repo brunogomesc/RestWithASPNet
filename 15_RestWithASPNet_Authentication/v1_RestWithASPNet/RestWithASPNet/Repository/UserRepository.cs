@@ -23,9 +23,21 @@ namespace RestWithASPNet.Repository
         public User ValidateCredentials(UserVO user)
         {
 
-            var pass = ComputeHash(user.Password, new SHA256CryptoServiceProvider());
-            
-            return _context.Users.FirstOrDefault(u => (u.Username == user.Username) && (u.Password == pass));  
+            try
+            {
+
+                var pass = ComputeHash(user.Password, new SHA256CryptoServiceProvider());
+
+                return _context.Users.FirstOrDefault(u => (u.Username == user.Username) && (u.Password == pass));
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+                
+            }
+
         }
 
         public User RefreshUserInfo(User user)
@@ -56,6 +68,11 @@ namespace RestWithASPNet.Repository
 
         }
 
+        public User ValidateCredentials(string username)
+        {
+            return _context.Users.SingleOrDefault(u => u.Username == username);
+        }
+
         private string ComputeHash(string input, SHA256CryptoServiceProvider algorithm)
         {
             Byte[] inputBytes = Encoding.UTF8.GetBytes(input);
@@ -64,7 +81,6 @@ namespace RestWithASPNet.Repository
 
             return BitConverter.ToString(hashedBytes);
         }
-
 
     }
 }

@@ -61,5 +61,41 @@ namespace RestWithASPNet.Business.Implementations
                 refreshToken
             );
         }
+
+        public TokenVO ValidateCredentials(TokenVO token)
+        {
+
+            var acessToken = token.AcessToken;
+
+            var refreshToken = token.RefreshToken;
+
+            var principal = _tokenService.GetPrincipalFromExpiredToken(acessToken);
+
+            var username = principal.Identity.Name;
+
+            var user = _repository.ValidateCredentials(username);
+
+            if (user == null || user.RefreshToken != refreshToken || user.RefreshTokenExpiryTime <= DateTime.Now) return null;
+
+            acessToken = _tokenService.GenerateAcessToken(principal.Claims);
+
+            refreshToken = _tokenService.GenerateRefreshToken();
+
+            user.RefreshToken = refreshToken;
+
+            _repository.RefreshUserInfo(user);
+
+            DateTime createDate = DateTime.Now;
+            DateTime expirationDate = createDate.AddMinutes(_configuration.Minutes);
+
+            return new TokenVO(
+                true,
+                createDate.ToString(DATE_FORMAT),
+                expirationDate.ToString(),
+                acessToken,
+                refreshToken
+            );
+
+        }
     }
 }

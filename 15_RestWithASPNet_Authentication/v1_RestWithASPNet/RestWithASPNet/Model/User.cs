@@ -14,9 +14,9 @@ namespace RestWithASPNet.Model
 
         [Key]
         [Column("id")]
-        public long Id { get; set; }
+        public int Id { get; set; }
 
-        [Column("users")]
+        [Column("username")]
         public string Username { get; set; }
 
         [Column("full_name")]

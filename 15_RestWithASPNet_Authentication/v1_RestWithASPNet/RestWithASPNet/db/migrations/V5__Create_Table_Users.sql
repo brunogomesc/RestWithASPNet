@@ -10,7 +10,7 @@ GO
 
 CREATE TABLE [dbo].[users](
 	[id] [int] IDENTITY(1,1) NOT NULL,
-	[users] [varchar](255) NOT NULL,
+	[user_name] [varchar](255) NOT NULL,
 	[pass] [varchar](100) NOT NULL,
 	[full_name] [varchar](300) NOT NULL,
 	[refresh_token] [varchar](500) NOT NULL,
@@ -26,7 +26,7 @@ UNIQUE NONCLUSTERED
 ) ON [PRIMARY]
 GO
 
-ALTER TABLE [dbo].[users] ADD  DEFAULT ('0') FOR [users]
+ALTER TABLE [dbo].[users] ADD  DEFAULT ('0') FOR [user_name]
 GO
 
 ALTER TABLE [dbo].[users] ADD  DEFAULT ('0') FOR [pass]
