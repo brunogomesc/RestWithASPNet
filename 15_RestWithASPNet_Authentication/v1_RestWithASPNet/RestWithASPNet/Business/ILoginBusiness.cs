@@ -13,5 +13,7 @@ namespace RestWithASPNet.Business
 
         TokenVO ValidateCredentials(TokenVO token);
 
+        bool RevokeToken(string username);
+
     } 
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RestWithASPNet.Business;
 using RestWithASPNet.Data.VO;
@@ -75,5 +76,34 @@ namespace RestWithASPNet.Controllers
             }
 
         }
+
+        [HttpGet]
+        [ProducesResponseType((200), Type = typeof(UserVO))]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
+        [Authorize("Bearer")]
+        [Route("revoke")]
+        public IActionResult Revoke()
+        {
+
+            try
+            {
+
+                var username = User.Identity.Name;
+
+                var result = _loginBusiness.RevokeToken(username);
+
+                if (!result) return BadRequest("Invalid client request");
+
+                return NoContent();
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }
+
     }
 }

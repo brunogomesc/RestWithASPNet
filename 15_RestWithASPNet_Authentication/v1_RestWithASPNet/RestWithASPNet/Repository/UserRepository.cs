@@ -73,6 +73,21 @@ namespace RestWithASPNet.Repository
             return _context.Users.SingleOrDefault(u => u.Username == username);
         }
 
+        public bool RevokeToken(string username)
+        {
+            
+            var user = _context.Users.SingleOrDefault(u => u.Username == username);
+
+            if (user is null) return false;
+
+            user.RefreshToken = null;
+
+            _context.SaveChanges();
+
+            return true;
+
+        }
+
         private string ComputeHash(string input, SHA256CryptoServiceProvider algorithm)
         {
             Byte[] inputBytes = Encoding.UTF8.GetBytes(input);
