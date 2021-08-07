@@ -11,7 +11,7 @@ namespace RestWithASPNet.Repository.Generic
     public class GenericRepository<T> : IRepository<T> where T : BaseEntity
     {
 
-        private SqlContext _context;
+        protected SqlContext _context;
 
         private DbSet<T> dataSet;
 

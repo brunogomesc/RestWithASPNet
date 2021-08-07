@@ -131,6 +131,7 @@ namespace RestWithASPNet
 
             services.AddScoped(typeof(IRepository<>),typeof(GenericRepository<>));
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IPersonRepository, PersonRepository>();
 
         }
 

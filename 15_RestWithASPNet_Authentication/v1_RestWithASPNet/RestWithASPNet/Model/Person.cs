@@ -20,5 +20,8 @@ namespace RestWithASPNet.Model
         [Column("gender")]
         public string Gender { get; set; }
 
+        [Column("person_enable")]
+        public bool Enabled { get; set; }
+
     }
 }

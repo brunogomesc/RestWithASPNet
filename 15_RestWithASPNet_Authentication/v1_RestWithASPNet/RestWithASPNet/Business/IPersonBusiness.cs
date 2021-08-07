@@ -18,6 +18,8 @@ namespace RestWithASPNet.Business
 
         List<PersonVO> FindAll();
 
+        PersonVO Disable(long id);
+
         void Delete(long id);
 
     }

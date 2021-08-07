@@ -1,0 +1,1 @@
+﻿ALTER TABLE dbo.person ADD person_enable BIT NOT NULL DEFAULT '1'
